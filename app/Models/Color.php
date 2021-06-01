@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use App\Models\Palette;
 
 class Color extends Model
 {
@@ -13,9 +15,10 @@ class Color extends Model
     protected $fillable = [
         'id',
         'code',
+        'status',
         'palette_id'
     ];
     public function palette(){
-        return $this -> belongsTo('App\Models\Palette','palette_id','id');
+        return $this -> belongsTo('Palette::class','palette_id','id');
     }
 }

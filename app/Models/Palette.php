@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Color;
 
 class Palette extends Model
 {
@@ -12,8 +13,9 @@ class Palette extends Model
     protected $fillable = [
         'id',
         'category',
+        'size'
     ];
     public function colors(){
-        return $this -> hasMany('App\Models\Color','palette_id','id');
+        return $this -> hasMany('Color::class','palette_id','id');
     }
 }

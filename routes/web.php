@@ -17,3 +17,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PalettesController::class,'index']);
 Route::resource('/palette', PalettesController::class);
+Route::get('/palette/{id}', PalettesController::class);

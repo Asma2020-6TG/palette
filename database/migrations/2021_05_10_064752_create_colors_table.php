@@ -16,9 +16,9 @@ class CreateColorsTable extends Migration
         Schema::create('colors', function (Blueprint $table) {
             $table->increments('id');
             $table->string('code');
+            $table->boolean('status');
             $table->unsignedBigInteger('palette_id');
-            $table->foreign('palette_id')->references('id')->on('palettes');
-            $table->timestamps();
+            $table->timestamps('added_at');
         });
     }
 

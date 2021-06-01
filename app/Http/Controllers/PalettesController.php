@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Palette;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class PalettesController extends Controller
 {
@@ -36,7 +37,10 @@ class PalettesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator= Validator::make($request->all(),
+        [
+            'size'=> 'required|min:3|max:6',
+        ]);
     }
 
     /**

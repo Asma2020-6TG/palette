@@ -12,6 +12,7 @@ class CreatePalettesTable extends Migration
         Schema::create('palettes', function (Blueprint $table) {
             $table->id();
             $table->string('category');
+            $table->integer('size');
 
         });
     }
