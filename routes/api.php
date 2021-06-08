@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\PaletteApiController;
+use App\Http\Controllers\CategoryController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,11 +16,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
-Route::get('/colors',
-    function (Request $request){
-    return $request->color();
 
+
+Route::get('/welcome', function (){
+    return 'get start';
 });
+Route::get('/categories',[CategoryController::class, 'index'] );
+
+Route::get('/palettes/id',[PaletteApiController::class, 'show'] );
+Route::post('/palettes',[PaletteApiController::class, 'store']);

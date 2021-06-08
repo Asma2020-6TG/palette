@@ -16,9 +16,7 @@ class Color extends Model
         'id',
         'code',
         'status',
-        'palette_id'
+        'category_id'
     ];
-    public function palette(){
-        return $this -> belongsTo('Palette::class','palette_id','id');
-    }
+
 }

@@ -12,10 +12,10 @@ class Palette extends Model
     protected $table = "palettes";
     protected $fillable = [
         'id',
-        'category',
+        'color_id',
+        'favourite',
         'size'
     ];
-    public function colors(){
-        return $this -> hasMany('Color::class','palette_id','id');
-    }
-}
+
+
+ }
