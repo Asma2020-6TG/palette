@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Palette;
+use App\Models\Color;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -13,10 +14,16 @@ class PalettesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function favourite()
+    {
+        $palette = Palette::all('favourite')->where();
+        return view('FavoritePalette',compact('palette'));
+    }
     public function index()
     {
         $palette= Palette::all();
-        return view('welcome');
+        return view('palettes');
     }
 
     /**
@@ -26,21 +33,19 @@ class PalettesController extends Controller
      */
     public function create()
     {
-        //
+        return view('palette.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
-        $validator= Validator::make($request->all(),
-        [
+        $request->validate([
             'size'=> 'required|min:3|max:6',
         ]);
+
+        $palette=Palette::create($request->all());
+        return redirect()->route('palette.index')
+        -> with('success','palette added successefully');
     }
 
     /**
@@ -49,9 +54,9 @@ class PalettesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Palette $palette)
     {
-        //
+        return view('palette.show', compact('palette'));
     }
 
     /**
@@ -62,7 +67,7 @@ class PalettesController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('palette.edit',compact('palette'));
     }
 
     /**
@@ -72,9 +77,15 @@ class PalettesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,Palette $palette)
     {
-        //
+        $request->validate([
+            'size'=> 'required|min:3|max:6',
+        ]);
+
+        $palette=Palette::update($request->all());
+        return redirect()->route('palette.index')
+            -> with('success','palette updated successefully');
     }
 
     /**
@@ -83,8 +94,10 @@ class PalettesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Palette $palette)
     {
-        //
+        $palette->delete();
+        return redirect()->route('palette.index')
+            -> with('success','palette deleted successefully');
     }
 }

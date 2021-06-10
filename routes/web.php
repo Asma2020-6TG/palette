@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PalettesController;
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -15,6 +16,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [PalettesController::class,'index']);
-Route::resource('/palette', PalettesController::class);
 
+
+Route::get('/welcome',[CategoryController::class,'index']);
+Route::get('/categories',[CategoryController::class,'allCategories'])-> name('categories');
+Route::get('/palettes/{id}',[CategoryController::class,'showPalettes']);
+Route::get('/favourite',[PalettesController::class,'favourite']);
+Route::resource('/palette', PalettesController::class);

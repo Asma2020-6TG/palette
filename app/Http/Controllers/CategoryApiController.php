@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Palette;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
-class PaletteApiController extends Controller
+class CategoryApiController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return Palette[]|\Illuminate\Database\Eloquent\Collection|\Illuminate\Http\Response
+     * @return Category[]|\Illuminate\Database\Eloquent\Collection|\Illuminate\Http\Response
      */
     public function index()
     {
-        return Palette::all();
+        return Category::all();
     }
 
     /**
@@ -25,11 +25,7 @@ class PaletteApiController extends Controller
      */
     public function store(Request $request)
     {
-        $data=$request->validate([
-            'size'=> 'required|min:3|max:6',
-        ]);
-        $palette= Palette::create($data);
-        return response($palette,200);
+
     }
 
     /**
@@ -40,9 +36,7 @@ class PaletteApiController extends Controller
      */
     public function show($id)
     {
-       $palette= Palette::where('id',$id)->get();
-        return reponse($palette);
-
+        //
     }
 
     /**
@@ -54,12 +48,7 @@ class PaletteApiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'size'=> 'required|min:3|max:6',
-
-        ]);
-        $palette = Palette::where('id', $id)-> update($request, $id);
-        return response($request,200);
+        //
     }
 
     /**
@@ -70,8 +59,6 @@ class PaletteApiController extends Controller
      */
     public function destroy($id)
     {
-        $palette = Palette::find($id);
-        $palette->delete();
-        return response('palette deleted, 200');
+        //
     }
 }

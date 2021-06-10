@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\PaletteApiController;
-use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CategoryApiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,7 +21,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/welcome', function (){
     return 'get start';
 });
-Route::get('/categories',[CategoryController::class, 'index'] );
+Route::get('/categories',[CategoryApiController::class, 'index'] );
 
 Route::get('/palettes/id',[PaletteApiController::class, 'show'] );
 Route::post('/palettes',[PaletteApiController::class, 'store']);
+Route::resource('palettes',PaletteApiController::class);

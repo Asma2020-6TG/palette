@@ -14,9 +14,12 @@ class Color extends Model
     protected $table = "colors";
     protected $fillable = [
         'id',
-        'code',
+        'hex_code',
+        'rgb_code',
         'status',
-        'category_id'
+        'category_id',
+        'palette_id'
     ];
+    public $timestamps = false;
 
 }

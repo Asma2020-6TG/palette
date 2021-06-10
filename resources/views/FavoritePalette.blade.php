@@ -1,1 +1,1 @@
-favourite
+favourite palettes

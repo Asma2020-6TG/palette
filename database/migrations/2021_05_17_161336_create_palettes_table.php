@@ -10,8 +10,8 @@ class CreatePalettesTable extends Migration
     public function up()
     {
         Schema::create('palettes', function (Blueprint $table) {
-            $table->increments('id');
-            $table->unsignedBigInteger('color_id');
+            $table->increments('palette_id');
+            $table->unsignedBigInteger('category_id');
             $table->integer('size');
             $table->boolean('favourite');
 

@@ -19,6 +19,7 @@ class CreateColorsTable extends Migration
             $table->string('rgb_code');
             $table->boolean('status');
             $table->unsignedBigInteger('category_id');
+            $table->unsignedBigInteger('palette_id');
         });
     }
 
@@ -30,5 +31,6 @@ class CreateColorsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('colors');
+
     }
 }

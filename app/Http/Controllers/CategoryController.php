@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Palette;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -14,7 +15,24 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return Category::all();
+        return view('welcome');
+    }
+    public function allCategories()
+   {
+       $categories =Category::select('id','name')->get();
+
+       return view('categories',compact('categories'));
+
+   }
+
+    public function showPalettes($category_id)
+    {
+        $category = Category::find($category_id);
+        $palettes = $category -> palettes;
+        return view('palettes',compact('palettes'));
+
+        //
+
     }
 
     /**

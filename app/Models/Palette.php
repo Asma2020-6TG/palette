@@ -11,11 +11,15 @@ class Palette extends Model
     use HasFactory;
     protected $table = "palettes";
     protected $fillable = [
-        'id',
-        'color_id',
+        'palette_id',
+        'category_id',
         'favourite',
         'size'
     ];
+    public $timestamps = false;
 
-
+    public function categories()
+    {
+        return $this->belongsTo(Category::class);
+    }
  }

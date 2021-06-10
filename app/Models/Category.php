@@ -9,15 +9,25 @@ class Category extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'id',
+        'category_id',
         'name'
     ];
-    public function palettes()
+
+    public $timestamps = false;
+
+    //relationship between categories and colors: hasmanythrough
+
+    public function colors()
     {
-        return $this->hasManyThrough(Palette::class,Color::class,
-            'category_id',
-            'color_id',
+        return $this->hasManyThrough(Color::class,Palette::class,
+            'id',
+            'palette_id',
             'id',
             'id');
+    }
+
+    public function palettes()
+    {
+        return $this->hasMany(Palette::class);
     }
 }
