@@ -22,4 +22,13 @@ class Color extends Model
     ];
     public $timestamps = false;
 
+    public function palettes()
+    {
+        return $this->belongsTo(Palette::class);
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

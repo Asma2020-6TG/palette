@@ -41,6 +41,8 @@ class PalettesController extends Controller
     {
         $request->validate([
             'size'=> 'required|min:3|max:6',
+            'category_id'=> 'required',
+            'favourite'=>'required'
         ]);
 
         $palette=Palette::create($request->all());

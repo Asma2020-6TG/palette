@@ -20,6 +20,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/welcome',[CategoryController::class,'index']);
 Route::get('/categories',[CategoryController::class,'allCategories'])-> name('categories');
-Route::get('/palettes/{id}',[CategoryController::class,'showPalettes']);
+Route::get('/categoryPalettes/{id}',[CategoryController::class,'categoryPalettes']);
 Route::get('/favourite',[PalettesController::class,'favourite']);
 Route::resource('/palette', PalettesController::class);

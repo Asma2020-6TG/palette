@@ -1,22 +1,19 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <html>
+        <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <h1>  Colors' palette  </h1>
+        </head>
 
-    <h1>  Colors' palette  </h1>
+        <body>
 
-</head>
+            <form>
 
-
-<body>
-
-    <form>
-
-
-            <input type='button' value='Get Start' />
-
-    </form>
-</body>
-</html>
+                <a href="/categories" >
+                    <input type='button' value='Get Start' />
+                </a>
+            </form>
+        </body>
+    </html>
 

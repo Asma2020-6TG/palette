@@ -22,7 +22,9 @@ Route::get('/welcome', function (){
     return 'get start';
 });
 Route::get('/categories',[CategoryApiController::class, 'index'] );
-
+Route::get('/palettes/categoryPalettes/{category_id}',[PaletteApiController::class,'categoryPalettes']);
+Route::get('/palettes/paletteColors/{palette_id}',[PaletteApiController::class,'paletteColors']);
 Route::get('/palettes/id',[PaletteApiController::class, 'show'] );
 Route::post('/palettes',[PaletteApiController::class, 'store']);
+Route::get('/palettes/favourite/{favourite}',[PaletteApiController::class,'favourite']);
 Route::resource('palettes',PaletteApiController::class);

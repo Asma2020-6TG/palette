@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Palette;
 use Illuminate\Http\Request;
 
 class CategoryApiController extends Controller
@@ -17,6 +18,13 @@ class CategoryApiController extends Controller
         return Category::all();
     }
 
+    public function categoryPalettes($category_id)
+    {
+        $category = Category::find($category_id);
+        $palettes = $category -> palettes;
+        $palettes = Palette::where('category_id',$category_id)->get();
+        return response($palettes,200);
+    }
     /**
      * Store a newly created resource in storage.
      *

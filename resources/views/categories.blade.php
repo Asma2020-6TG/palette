@@ -7,7 +7,8 @@
                 @if(isset($categories) && $categories -> count()>0)
                     @foreach($categories as $category)
 
-                       <a href= " ">
+                       <a href= " /categoryPalettes/{id} " >
+
                         <input type='button' value='{{$category -> name}}' />
                         </a> <br> <br>
 

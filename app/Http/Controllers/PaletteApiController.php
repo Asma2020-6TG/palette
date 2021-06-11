@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Palette;
+use App\Models\Color;
 use Illuminate\Http\Request;
 
 class PaletteApiController extends Controller
@@ -17,6 +18,20 @@ class PaletteApiController extends Controller
         return Palette::all();
     }
 
+    public function categoryPalettes($category_id)
+    {
+        $palettes = Palette::where('category_id',$category_id)->get();
+        return response($palettes,200);
+    }
+
+    public function paletteColors($palette_id)
+    {
+        $palette = Palette::find($palette_id);
+        $colors = $palette -> colors;
+        $palettes = Palette::where('palette_id',$palette_id)->get();
+        return response($palettes,200);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -25,8 +40,10 @@ class PaletteApiController extends Controller
      */
     public function store(Request $request)
     {
-        $data=$request->validate([
-            'size'=> 'required|min:3|max:6',
+        $data = $request->validate([
+            'category_id'=>'required',
+            'size'=> 'required',
+            'favourite'=> 'required'
         ]);
         $palette= Palette::create($data);
         return response($palette,200);
@@ -44,6 +61,11 @@ class PaletteApiController extends Controller
         return reponse($palette);
 
     }
+    public function favourite($favourite)
+    {
+        $palettes = Palette::where('favourite',$favourite)->get();
+        return response($palettes,200);
+    }
 
     /**
      * Update the specified resource in storage.
@@ -52,14 +74,16 @@ class PaletteApiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $palette_id)
     {
-        $request->validate([
-            'size'=> 'required|min:3|max:6',
+        $data = $request->validate([
+            'category_id'=>'required',
+            'size'=> 'required',
+            'favourite'=> 'required'
 
         ]);
-        $palette = Palette::where('id', $id)-> update($request, $id);
-        return response($request,200);
+        $palette = Palette::where('id', $palette_id)-> update($data, $palette_id);
+        return response($palette,200);
     }
 
     /**
@@ -68,9 +92,9 @@ class PaletteApiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($palette_id)
     {
-        $palette = Palette::find($id);
+        $palette = Palette::find($palette_id);
         $palette->delete();
         return response('palette deleted, 200');
     }

@@ -18,8 +18,15 @@ class Palette extends Model
     ];
     public $timestamps = false;
 
+
+
     public function categories()
     {
         return $this->belongsTo(Category::class);
     }
- }
+
+    public function colors()
+    {
+        return $this->hasMany(Color::class);
+    }
+}

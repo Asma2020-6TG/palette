@@ -25,7 +25,7 @@ class CategoryController extends Controller
 
    }
 
-    public function showPalettes($category_id)
+    public function categoryPalettes($category_id)
     {
         $category = Category::find($category_id);
         $palettes = $category -> palettes;
