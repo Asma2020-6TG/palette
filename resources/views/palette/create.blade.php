@@ -1,7 +1,9 @@
 <!DOCTYPE>
 <html>
-<form method="POST">
+<body>
+<form action="/palette" method="POST">
     @csrf
+
 <h1> create new colors palette </h1>
     <div>
         <label> colors category </label>
@@ -31,6 +33,7 @@
     </div>
     <hr>
     <hr>
-    <input type="submit" value="create palette"/>
+    <button type="submit" > create palette   </button>
 </form>
+</body>
 </html>
